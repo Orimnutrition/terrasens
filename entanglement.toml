@@ -1,0 +1,143 @@
+# TERRASENS — Matrice d'intrication quantique
+# Chaque paire definit des modules couples : modifier l'un propage au second.
+# Utilise par le Moteur Quantique (/quantum-terrasens entangle)
+
+[metadata]
+version = "1.0.0"
+description = "Paires intriquees TERRASENS — auto-synchronisation des modules"
+
+# ═══════════════════════════════════════════════════════
+# PAIRE 1 : Sol ↔ Cultures
+# Analyse sol → ajuste recommandations cultures
+# ═══════════════════════════════════════════════════════
+[[entanglement]]
+id = "ENT-001"
+module_a = "terrasens-soil"
+module_b = "terrasens-crops"
+trigger = "AnalyseSol.ph OR AnalyseSol.matiere_organique changed"
+propagation = """
+  Si pH < 5.5 → exclure cultures sensibles acidite (luzerne, betterave)
+  Si MO < 2%  → privilegier legumineuses (fixation azote)
+  Si P < 15   → eviter cultures exigeantes en P (mais, pomme de terre)
+"""
+validation_test = "tests/integration/sol_cultures_sync.rs"
+priority = "haute"
+
+# ═══════════════════════════════════════════════════════
+# PAIRE 2 : Meteo ↔ Eau
+# Prevision pluie → ajuste irrigation
+# ═══════════════════════════════════════════════════════
+[[entanglement]]
+id = "ENT-002"
+module_a = "terrasens-weather"
+module_b = "terrasens-water"
+trigger = "ObservationMeteo.precipitation_mm OR AlerteMeteo.type_alerte changed"
+propagation = """
+  Si pluie prevue > 20mm/48h → suspendre irrigation
+  Si secheresse > 7 jours    → alerte irrigation urgente
+  Si gel prevu               → ajuster reserve hydrique (gel = deshydratation)
+"""
+validation_test = "tests/integration/meteo_eau_sync.rs"
+priority = "critique"
+
+# ═══════════════════════════════════════════════════════
+# PAIRE 3 : Sante vegetale ↔ Biodiversite
+# Detection ravageur → impact ecosysteme
+# ═══════════════════════════════════════════════════════
+[[entanglement]]
+id = "ENT-003"
+module_a = "terrasens-health"
+module_b = "terrasens-biodiversity"
+trigger = "DiagnosticPlante.maladie detected"
+propagation = """
+  Si ravageur detecte → verifier presence predateurs naturels (M8)
+  Si traitement bio applique → logger impact biodiversite
+  Si insecte auxiliaire absent → recommander haies, bandes fleuries
+"""
+validation_test = "tests/integration/sante_biodiv_sync.rs"
+priority = "haute"
+
+# ═══════════════════════════════════════════════════════
+# PAIRE 4 : Memoire ancestrale ↔ Comptabilite
+# Pratique ancestrale → cout/benefice
+# ═══════════════════════════════════════════════════════
+[[entanglement]]
+id = "ENT-004"
+module_a = "terrasens-memory"
+module_b = "terrasens-accounting"
+trigger = "SavoirAncestral applied to parcelle"
+propagation = """
+  Si pratique ancestrale utilisee → calculer economie vs methode conventionnelle
+  Si cout pratique > seuil → signaler mais ne pas bloquer (respect tradition)
+  Si rendement ameliore → documenter comme reference economique
+"""
+validation_test = "tests/integration/memoire_compta_sync.rs"
+priority = "moyenne"
+
+# ═══════════════════════════════════════════════════════
+# PAIRE 5 : Auth terrain ↔ UI
+# Changement auth → tous les ecrans s'adaptent
+# ═══════════════════════════════════════════════════════
+[[entanglement]]
+id = "ENT-005"
+module_a = "terrasens-auth"
+module_b = "ui"
+trigger = "ResultatAuth.score OR CoucheAuth changed"
+propagation = """
+  Si auth partielle (1-2 couches) → mode lecture seule
+  Si auth complete (3-4 couches)  → mode ecriture complet
+  Si auth refusee                 → ecran verrouille + message explicatif
+"""
+validation_test = "tests/integration/auth_ui_sync.rs"
+priority = "critique"
+
+# ═══════════════════════════════════════════════════════
+# PAIRE 6 : Schema SQL ↔ API Rust
+# Migration DB → regeneration automatique des structs
+# ═══════════════════════════════════════════════════════
+[[entanglement]]
+id = "ENT-006"
+module_a = "terrasens-db"
+module_b = "terrasens-core"
+trigger = "SQL migration applied"
+propagation = """
+  Nouvelle colonne → ajouter champ dans struct Rust correspondante
+  Colonne supprimee → retirer champ + compiler pour detecter usages
+  Index ajoute → verifier que les queries Rust l'utilisent
+"""
+validation_test = "tests/integration/db_api_sync.rs"
+priority = "haute"
+
+# ═══════════════════════════════════════════════════════
+# PAIRE 7 : Rules ↔ i18n
+# Nouvelle regle agronomique → traduction auto
+# ═══════════════════════════════════════════════════════
+[[entanglement]]
+id = "ENT-007"
+module_a = "terrasens-rules"
+module_b = "i18n"
+trigger = "RegleAgronomique added OR modified"
+propagation = """
+  Nouvelle regle → generer traductions FR/EN/DE/IT/ES
+  Modification explication → mettre a jour toutes les langues
+  Source scientifique changee → verifier reference dans toutes les locales
+"""
+validation_test = "tests/integration/rules_i18n_sync.rs"
+priority = "moyenne"
+
+# ═══════════════════════════════════════════════════════
+# PAIRE 8 : Sol ↔ Capteurs
+# Nouveau capteur sol → enrichir analyses
+# ═══════════════════════════════════════════════════════
+[[entanglement]]
+id = "ENT-008"
+module_a = "terrasens-sensors"
+module_b = "terrasens-soil"
+trigger = "LectureCapteur.type_capteur == Ph OR HumiditeSol"
+propagation = """
+  Lecture pH capteur → creer AnalyseSol partielle automatique
+  Lecture humidite sol → alimenter bilan hydrique M5
+  Capteur hors ligne > 24h → alerte maintenance
+"""
+validation_test = "tests/integration/capteur_sol_sync.rs"
+priority = "haute"
