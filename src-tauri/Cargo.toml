@@ -1,0 +1,27 @@
+[package]
+name = "agrorim-desktop"
+version = "0.2.0"
+edition = "2021"
+description = "AGRORIM™ — Interface bureau souveraine"
+license = "AGPL-3.0-or-later"
+authors = ["Olivier Chevalley <info@orimnutrition.com>"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-shell = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# AGRORIM modules
+agrorim-core = { path = "../crates/agrorim-core" }
+agrorim-soil = { path = "../crates/agrorim-soil" }
+agrorim-crops = { path = "../crates/agrorim-crops" }
+agrorim-weather = { path = "../crates/agrorim-weather" }
+agrorim-health = { path = "../crates/agrorim-health" }
+agrorim-water = { path = "../crates/agrorim-water" }
+agrorim-memory = { path = "../crates/agrorim-memory" }
+agrorim-accounting = { path = "../crates/agrorim-accounting" }
+agrorim-biodiversity = { path = "../crates/agrorim-biodiversity" }

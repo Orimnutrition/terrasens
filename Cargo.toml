@@ -1,42 +1,43 @@
 [package]
-name = "terrasens"
+name = "agrorim"
 version = "0.1.0"
 edition = "2024"
 description = "IA agronomique souveraine — local-first, zero cloud, zero extraction"
 license = "AGPL-3.0-or-later"
 authors = ["Olivier Chevalley <info@orimnutrition.com>"]
-repository = "https://github.com/orim-association/terrasens"
+repository = "https://github.com/orim-association/agrorim"
 
 [workspace]
 members = [
-    "crates/terrasens-core",
-    "crates/terrasens-soil",
-    "crates/terrasens-weather",
-    "crates/terrasens-crops",
-    "crates/terrasens-health",
-    "crates/terrasens-water",
-    "crates/terrasens-memory",
-    "crates/terrasens-accounting",
-    "crates/terrasens-biodiversity",
-    "crates/terrasens-auth",
-    "crates/terrasens-db",
-    "crates/terrasens-sensors",
-    "crates/terrasens-rules",
+    "crates/agrorim-core",
+    "crates/agrorim-soil",
+    "crates/agrorim-weather",
+    "crates/agrorim-crops",
+    "crates/agrorim-health",
+    "crates/agrorim-water",
+    "crates/agrorim-memory",
+    "crates/agrorim-accounting",
+    "crates/agrorim-biodiversity",
+    "crates/agrorim-auth",
+    "crates/agrorim-db",
+    "crates/agrorim-sensors",
+    "crates/agrorim-rules",
+    "src-tauri",
 ]
 
 [dependencies]
-terrasens-core = { path = "crates/terrasens-core" }
-terrasens-soil = { path = "crates/terrasens-soil" }
-terrasens-db = { path = "crates/terrasens-db" }
-terrasens-auth = { path = "crates/terrasens-auth" }
-terrasens-rules = { path = "crates/terrasens-rules" }
-terrasens-crops = { path = "crates/terrasens-crops" }
-terrasens-weather = { path = "crates/terrasens-weather" }
-terrasens-health = { path = "crates/terrasens-health" }
-terrasens-water = { path = "crates/terrasens-water" }
-terrasens-memory = { path = "crates/terrasens-memory" }
-terrasens-accounting = { path = "crates/terrasens-accounting" }
-terrasens-biodiversity = { path = "crates/terrasens-biodiversity" }
+agrorim-core = { path = "crates/agrorim-core" }
+agrorim-soil = { path = "crates/agrorim-soil" }
+agrorim-db = { path = "crates/agrorim-db" }
+agrorim-auth = { path = "crates/agrorim-auth" }
+agrorim-rules = { path = "crates/agrorim-rules" }
+agrorim-crops = { path = "crates/agrorim-crops" }
+agrorim-weather = { path = "crates/agrorim-weather" }
+agrorim-health = { path = "crates/agrorim-health" }
+agrorim-water = { path = "crates/agrorim-water" }
+agrorim-memory = { path = "crates/agrorim-memory" }
+agrorim-accounting = { path = "crates/agrorim-accounting" }
+agrorim-biodiversity = { path = "crates/agrorim-biodiversity" }
 
 # CLI & Runtime
 tokio = { version = "1", features = ["full"] }

@@ -1,0 +1,11 @@
+[package]
+name = "agrorim-rules"
+version = "0.1.0"
+edition = "2024"
+description = "Moteur de règles agronomiques explicables"
+
+[dependencies]
+agrorim-core = { path = "../agrorim-core" }
+serde = { version = "1", features = ["derive"] }
+thiserror = "2"
+tracing = "0.1"

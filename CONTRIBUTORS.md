@@ -1,4 +1,4 @@
-# Contributors — TERRASENS™
+# Contributors — AGRORIM™
 
 Tous les contributeurs ont accepté le [CLA](CLA.md).
 

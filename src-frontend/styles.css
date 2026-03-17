@@ -1,0 +1,301 @@
+/* ═══════════════════════════════════════════════════
+   AGRORIM™ — Charte graphique ORIM
+   Teal #1BA8A6 · Gold #E6A817 · Dark #2D3436
+   Font: Arial, system-ui
+   ═══════════════════════════════════════════════════ */
+
+:root {
+  --teal: #1BA8A6;
+  --teal-dark: #158a88;
+  --teal-light: #e0f5f4;
+  --gold: #E6A817;
+  --gold-light: #fdf3d7;
+  --dark: #2D3436;
+  --dark-soft: #636e72;
+  --bg: #f8f9fa;
+  --white: #ffffff;
+  --border: #dfe6e9;
+  --radius: 8px;
+  --shadow: 0 2px 8px rgba(45, 52, 54, 0.08);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--dark);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER */
+.header {
+  background: linear-gradient(135deg, var(--dark) 0%, #1e272e 100%);
+  color: var(--white);
+  padding: 20px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.logo .tm {
+  font-size: 14px;
+  vertical-align: super;
+  color: var(--gold);
+}
+
+.tagline {
+  font-size: 13px;
+  color: var(--teal);
+  margin-top: 4px;
+  letter-spacing: 0.5px;
+}
+
+.header-badges {
+  display: flex;
+  gap: 8px;
+}
+
+.badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge-local {
+  background: var(--teal);
+  color: var(--white);
+}
+
+.badge-version {
+  background: var(--gold);
+  color: var(--dark);
+}
+
+/* TABS NAVIGATION */
+.tabs {
+  display: flex;
+  gap: 0;
+  background: var(--white);
+  border-bottom: 2px solid var(--border);
+  overflow-x: auto;
+  padding: 0 16px;
+}
+
+.tab {
+  padding: 12px 20px;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--dark-soft);
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s;
+  white-space: nowrap;
+  font-family: Arial, system-ui, sans-serif;
+}
+
+.tab:hover {
+  color: var(--teal);
+  background: var(--teal-light);
+}
+
+.tab.active {
+  color: var(--teal);
+  border-bottom-color: var(--teal);
+}
+
+/* CONTENT */
+.content {
+  flex: 1;
+  padding: 24px 32px;
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.module {
+  display: none;
+}
+
+.module.active {
+  display: block;
+}
+
+.module h2 {
+  font-size: 22px;
+  color: var(--dark);
+  margin-bottom: 8px;
+}
+
+.module-desc {
+  color: var(--dark-soft);
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+/* FORMS */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.field.full-width {
+  grid-column: 1 / -1;
+}
+
+.field label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.field input,
+.field select,
+.field textarea {
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-family: Arial, system-ui, sans-serif;
+  transition: border-color 0.2s;
+  background: var(--white);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(27, 168, 166, 0.15);
+}
+
+.field textarea {
+  resize: vertical;
+  font-family: 'SF Mono', 'Monaco', 'Menlo', monospace;
+  font-size: 13px;
+}
+
+.btn-primary {
+  grid-column: 1 / -1;
+  padding: 12px 24px;
+  background: var(--teal);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-family: Arial, system-ui, sans-serif;
+}
+
+.btn-primary:hover {
+  background: var(--teal-dark);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+}
+
+/* RESULT BOX */
+.result-box {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  font-size: 14px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  font-family: 'SF Mono', 'Monaco', 'Menlo', monospace;
+  box-shadow: var(--shadow);
+  min-height: 60px;
+  color: var(--dark);
+}
+
+.result-box:empty {
+  display: none;
+}
+
+.result-box.loading {
+  display: block;
+  color: var(--dark-soft);
+  font-style: italic;
+}
+
+.result-box.error {
+  border-color: #e74c3c;
+  background: #fdf0ef;
+  color: #c0392b;
+}
+
+/* Score highlights */
+.score-excellent { color: #27ae60; font-weight: 700; }
+.score-bon { color: var(--teal); font-weight: 700; }
+.score-moyen { color: var(--gold); font-weight: 700; }
+.score-bas { color: #e74c3c; font-weight: 700; }
+
+/* FOOTER */
+.footer {
+  background: var(--dark);
+  color: var(--dark-soft);
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.footer-pilier {
+  color: var(--teal);
+  margin-top: 4px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .tabs {
+    padding: 0 8px;
+  }
+
+  .tab {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .content {
+    padding: 16px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,18 +1,18 @@
 # Contributor License Agreement (CLA)
 
-## TERRASENS™ — Association ORIM Genève
+## AGRORIM™ — Association ORIM Genève
 
 Version 1.0 — Mars 2026
 
 ---
 
-Merci de votre intérêt pour TERRASENS™. Ce Contributor License Agreement ("CLA") définit les conditions sous lesquelles vous contribuez au projet.
+Merci de votre intérêt pour AGRORIM™. Ce Contributor License Agreement ("CLA") définit les conditions sous lesquelles vous contribuez au projet.
 
 ### 1. Définitions
 
 - **"Vous"** désigne la personne physique ou morale qui soumet une Contribution.
 - **"Contribution"** désigne tout code source, documentation, design ou autre oeuvre soumise au Projet.
-- **"Projet"** désigne TERRASENS™ et ses dépendances.
+- **"Projet"** désigne AGRORIM™ et ses dépendances.
 - **"Association"** désigne l'Association ORIM, sise à Genève, Suisse.
 
 ### 2. Cession de droits
@@ -42,7 +42,7 @@ L'Association Vous accorde une licence perpétuelle, mondiale, non-exclusive et 
 
 L'Association s'engage à :
 
-- Maintenir TERRASENS™ sous licence open source (AGPL-3.0-or-later)
+- Maintenir AGRORIM™ sous licence open source (AGPL-3.0-or-later)
 - Créditer les contributeurs dans CONTRIBUTORS.md
 - Ne jamais utiliser les Contributions dans un produit propriétaire fermé
 

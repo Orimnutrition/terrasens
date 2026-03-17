@@ -1,23 +1,23 @@
-//! # TERRASENS™ — IA Agronomique Souveraine
+//! # AGRORIM™ — IA Agronomique Souveraine
 //!
 //! Point d'entrée principal — Démonstration de tous les modules M1-M8.
 //! Local-first · Zéro cloud · Zéro extraction · 100% explicable
 //!
 //! © 2026 Association ORIM Genève — AGPL-3.0-or-later
 
-use terrasens_core::{GeoPoint, MgParKg, ParcelleId, Ph, Pourcentage};
-use terrasens_soil::{AnalyseSol, SolService};
-use terrasens_crops::{CulturesService, ZoneClimatique};
-use terrasens_weather::MeteoService;
-use terrasens_health::SanteService;
-use terrasens_water::{HydriqueService, TypeSolHydrique};
-use terrasens_memory::MemoireService;
-use terrasens_accounting::{ComptaService, CategorieCout, Devise, CanalVente};
-use terrasens_biodiversity::{BiodiversiteService, CategorieBio, RoleEcologique};
+use agrorim_core::{GeoPoint, MgParKg, ParcelleId, Ph, Pourcentage};
+use agrorim_soil::{AnalyseSol, SolService};
+use agrorim_crops::{CulturesService, ZoneClimatique};
+use agrorim_weather::MeteoService;
+use agrorim_health::SanteService;
+use agrorim_water::{HydriqueService, TypeSolHydrique};
+use agrorim_memory::MemoireService;
+use agrorim_accounting::{ComptaService, CategorieCout, Devise, CanalVente};
+use agrorim_biodiversity::{BiodiversiteService, CategorieBio, RoleEcologique};
 
 fn main() {
     println!("╔═══════════════════════════════════════════════════╗");
-    println!("║          TERRASENS v0.2.0                        ║");
+    println!("║          AGRORIM v0.2.0                        ║");
     println!("║  IA Agronomique Souveraine                       ║");
     println!("║  8 modules · Local-first · Zéro cloud            ║");
     println!("║  © 2026 Association ORIM Genève                  ║");
@@ -94,12 +94,12 @@ fn main() {
     println!("━━━ M6 MÉMOIRE ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
     let mut service_memoire = MemoireService::new();
     service_memoire.journal().ajouter(
-        terrasens_memory::TypeEntree::Observation,
+        agrorim_memory::TypeEntree::Observation,
         "Sol meuble après la pluie, vers de terre nombreux",
         Some("P1"), Some("Tomate"), &["sol", "printemps"],
     );
     service_memoire.journal().ajouter(
-        terrasens_memory::TypeEntree::Recolte,
+        agrorim_memory::TypeEntree::Recolte,
         "Première récolte de tomates cerises — 3.5 kg",
         Some("P1"), Some("Tomate"), &["récolte"],
     );
@@ -146,8 +146,8 @@ fn main() {
     // RÉSUMÉ FINAL
     // ═══════════════════════════════════════════════
     println!("╔═══════════════════════════════════════════════════╗");
-    println!("║  TERRASENS — 8 modules opérationnels             ║");
-    println!("║  135+ tests · 0 cloud · 100% local               ║");
-    println!("║  Prêt pour le terrain.                           ║");
+    println!("║  AGRORIM™ — 8 modules opérationnels              ║");
+    println!("║  134 tests · 0 cloud · 100% local                ║");
+    println!("║  L'agriculture a un sens.                        ║");
     println!("╚═══════════════════════════════════════════════════╝");
 }

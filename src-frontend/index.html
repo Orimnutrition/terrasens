@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AGRORIM™ — IA Agronomique Souveraine</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-brand">
+      <h1 class="logo">AGRORIM<span class="tm">™</span></h1>
+      <p class="tagline">IA Agronomique Souveraine · Local-first · Zéro cloud</p>
+    </div>
+    <div class="header-badges">
+      <span class="badge badge-local">100% Local</span>
+      <span class="badge badge-version" id="version-badge">v0.2.0</span>
+    </div>
+  </header>
+
+  <!-- NAVIGATION MODULES -->
+  <nav class="tabs">
+    <button class="tab active" data-module="sol">M1 Sol</button>
+    <button class="tab" data-module="cultures">M2 Cultures</button>
+    <button class="tab" data-module="meteo">M3 Météo</button>
+    <button class="tab" data-module="sante">M4 Santé</button>
+    <button class="tab" data-module="eau">M5 Eau</button>
+    <button class="tab" data-module="memoire">M6 Mémoire</button>
+    <button class="tab" data-module="compta">M7 Compta</button>
+    <button class="tab" data-module="biodiversite">M8 Biodiversité</button>
+  </nav>
+
+  <!-- CONTENU MODULES -->
+  <main class="content">
+
+    <!-- M1 SOL -->
+    <section class="module active" id="mod-sol">
+      <h2>M1 — Analyse de Sol</h2>
+      <p class="module-desc">Saisissez vos paramètres d'analyse de sol pour obtenir un diagnostic explicable.</p>
+      <form id="form-sol" class="form-grid">
+        <div class="field">
+          <label for="sol-ph">pH</label>
+          <input type="number" id="sol-ph" step="0.1" min="3" max="10" placeholder="6.5">
+        </div>
+        <div class="field">
+          <label for="sol-mo">Matière organique (%)</label>
+          <input type="number" id="sol-mo" step="0.1" min="0" max="20" placeholder="3.8">
+        </div>
+        <div class="field">
+          <label for="sol-p">Phosphore Olsen (mg/kg)</label>
+          <input type="number" id="sol-p" step="1" min="0" placeholder="25">
+        </div>
+        <div class="field">
+          <label for="sol-k">Potassium (mg/kg)</label>
+          <input type="number" id="sol-k" step="1" min="0" placeholder="180">
+        </div>
+        <div class="field">
+          <label for="sol-cec">CEC (meq/100g)</label>
+          <input type="number" id="sol-cec" step="0.1" min="0" placeholder="16">
+        </div>
+        <div class="field">
+          <label for="sol-argile">Argile (%)</label>
+          <input type="number" id="sol-argile" step="1" min="0" max="100" placeholder="25">
+        </div>
+        <div class="field">
+          <label for="sol-limon">Limon (%)</label>
+          <input type="number" id="sol-limon" step="1" min="0" max="100" placeholder="40">
+        </div>
+        <div class="field">
+          <label for="sol-sable">Sable (%)</label>
+          <input type="number" id="sol-sable" step="1" min="0" max="100" placeholder="35">
+        </div>
+        <button type="submit" class="btn-primary">Analyser</button>
+      </form>
+      <div id="result-sol" class="result-box"></div>
+    </section>
+
+    <!-- M2 CULTURES -->
+    <section class="module" id="mod-cultures">
+      <h2>M2 — Planification des Cultures</h2>
+      <p class="module-desc">Recommandations de cultures adaptées à votre sol et zone climatique.</p>
+      <form id="form-cultures" class="form-grid">
+        <div class="field">
+          <label for="cult-zone">Zone climatique</label>
+          <select id="cult-zone">
+            <option value="continental">Continental</option>
+            <option value="oceanique">Océanique</option>
+            <option value="mediterraneen">Méditerranéen</option>
+            <option value="montagnard">Montagnard</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="cult-ph">pH du sol</label>
+          <input type="number" id="cult-ph" step="0.1" placeholder="6.5">
+        </div>
+        <div class="field">
+          <label for="cult-mo">Matière organique (%)</label>
+          <input type="number" id="cult-mo" step="0.1" placeholder="3.8">
+        </div>
+        <div class="field">
+          <label for="cult-mois">Mois de semis</label>
+          <select id="cult-mois">
+            <option value="">Tous</option>
+            <option value="3">Mars</option>
+            <option value="4">Avril</option>
+            <option value="5">Mai</option>
+            <option value="6">Juin</option>
+            <option value="7">Juillet</option>
+            <option value="8">Août</option>
+            <option value="9">Septembre</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-primary">Recommander</button>
+      </form>
+      <div id="result-cultures" class="result-box"></div>
+    </section>
+
+    <!-- M3 MÉTÉO -->
+    <section class="module" id="mod-meteo">
+      <h2>M3 — Météo Hyper-locale</h2>
+      <p class="module-desc">Enregistrez vos observations météo pour des alertes et tendances locales.</p>
+      <form id="form-meteo" class="form-grid">
+        <div class="field">
+          <label for="meteo-lat">Latitude</label>
+          <input type="number" id="meteo-lat" step="0.0001" value="46.2044" placeholder="46.2044">
+        </div>
+        <div class="field">
+          <label for="meteo-lon">Longitude</label>
+          <input type="number" id="meteo-lon" step="0.0001" value="6.1432" placeholder="6.1432">
+        </div>
+        <div class="field">
+          <label for="meteo-mois">Mois</label>
+          <input type="number" id="meteo-mois" min="1" max="12" value="5" placeholder="5">
+        </div>
+        <div class="field full-width">
+          <label>Observations (une par ligne : temp, humidité, pluie, vent)</label>
+          <textarea id="meteo-obs" rows="5" placeholder="14, 65, 0, 12
+16, 58, 0, 8
+12, 72, 4.5, 15
+18, 55, 0, 6
+20, 50, 0, 10"></textarea>
+        </div>
+        <button type="submit" class="btn-primary">Analyser météo</button>
+      </form>
+      <div id="result-meteo" class="result-box"></div>
+    </section>
+
+    <!-- M4 SANTÉ -->
+    <section class="module" id="mod-sante">
+      <h2>M4 — Santé Végétale</h2>
+      <p class="module-desc">Diagnostic phytosanitaire par symptômes. 15+ pathologies référencées.</p>
+      <form id="form-sante" class="form-grid">
+        <div class="field">
+          <label for="sante-culture">Culture</label>
+          <input type="text" id="sante-culture" placeholder="Tomate">
+        </div>
+        <div class="field full-width">
+          <label for="sante-symptomes">Symptômes (un par ligne)</label>
+          <textarea id="sante-symptomes" rows="4" placeholder="taches brunes
+duvet blanc sous les feuilles"></textarea>
+        </div>
+        <button type="submit" class="btn-primary">Diagnostiquer</button>
+      </form>
+      <div id="result-sante" class="result-box"></div>
+    </section>
+
+    <!-- M5 EAU -->
+    <section class="module" id="mod-eau">
+      <h2>M5 — Gestion Hydrique</h2>
+      <p class="module-desc">Bilan hydrique ETP Hargreaves, stress, recommandations d'irrigation.</p>
+      <form id="form-eau" class="form-grid">
+        <div class="field">
+          <label for="eau-sol">Type de sol</label>
+          <select id="eau-sol">
+            <option value="limoneux">Limoneux</option>
+            <option value="argileux">Argileux</option>
+            <option value="sableux">Sableux</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="eau-surface">Surface (ha)</label>
+          <input type="number" id="eau-surface" step="0.01" value="0.5" placeholder="0.5">
+        </div>
+        <div class="field">
+          <label for="eau-culture">Culture</label>
+          <input type="text" id="eau-culture" value="Tomate" placeholder="Tomate">
+        </div>
+        <div class="field full-width">
+          <label>Jours (date, pluie_mm, irrigation_mm, temp)</label>
+          <textarea id="eau-jours" rows="5" placeholder="2026-07-10, 0, 0, 28
+2026-07-11, 0, 0, 30
+2026-07-12, 0, 0, 32
+2026-07-13, 15, 0, 25
+2026-07-14, 0, 0, 27"></textarea>
+        </div>
+        <button type="submit" class="btn-primary">Bilan hydrique</button>
+      </form>
+      <div id="result-eau" class="result-box"></div>
+    </section>
+
+    <!-- M6 MÉMOIRE -->
+    <section class="module" id="mod-memoire">
+      <h2>M6 — Mémoire Ancestrale</h2>
+      <p class="module-desc">Savoirs paysans validés scientifiquement et journal de bord.</p>
+      <form id="form-memoire" class="form-grid">
+        <div class="field">
+          <label for="memoire-recherche">Rechercher un savoir</label>
+          <input type="text" id="memoire-recherche" placeholder="ortie, lune, compagnonnage...">
+        </div>
+        <button type="submit" class="btn-primary">Chercher</button>
+      </form>
+      <div id="result-memoire" class="result-box"></div>
+    </section>
+
+    <!-- M7 COMPTABILITÉ -->
+    <section class="module" id="mod-compta">
+      <h2>M7 — Comptabilité Agronomique</h2>
+      <p class="module-desc">Coûts, revenus et marge brute par parcelle en CHF ou EUR.</p>
+      <form id="form-compta" class="form-grid">
+        <div class="field">
+          <label for="compta-devise">Devise</label>
+          <select id="compta-devise">
+            <option value="CHF">CHF</option>
+            <option value="EUR">EUR</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="compta-parcelle">Nom parcelle</label>
+          <input type="text" id="compta-parcelle" value="P1" placeholder="P1">
+        </div>
+        <div class="field">
+          <label for="compta-culture">Culture</label>
+          <input type="text" id="compta-culture" value="Tomate" placeholder="Tomate">
+        </div>
+        <div class="field">
+          <label for="compta-surface">Surface (ha)</label>
+          <input type="number" id="compta-surface" step="0.01" value="0.08">
+        </div>
+        <div class="field">
+          <label for="compta-saison">Saison</label>
+          <input type="text" id="compta-saison" value="2026">
+        </div>
+        <div class="field full-width">
+          <label>Coûts (catégorie, description, montant) — un par ligne</label>
+          <textarea id="compta-couts" rows="4" placeholder="semences, Graines bio, 35
+engrais, Compost maison, 0
+irrigation, Goutte-à-goutte, 60
+main_oeuvre, 25h travail, 750"></textarea>
+        </div>
+        <div class="field full-width">
+          <label>Revenus (quantité_kg, prix/kg, canal) — un par ligne</label>
+          <textarea id="compta-revenus" rows="3" placeholder="180, 6.00, directe
+120, 4.50, marche"></textarea>
+        </div>
+        <button type="submit" class="btn-primary">Calculer marge</button>
+      </form>
+      <div id="result-compta" class="result-box"></div>
+    </section>
+
+    <!-- M8 BIODIVERSITÉ -->
+    <section class="module" id="mod-biodiversite">
+      <h2>M8 — Biodiversité</h2>
+      <p class="module-desc">Indice Shannon-Wiener, équitabilité Piélou, auxiliaires de culture.</p>
+      <form id="form-biodiversite" class="form-grid">
+        <div class="field">
+          <label for="bio-parcelle">Parcelle</label>
+          <input type="text" id="bio-parcelle" value="Parcelle P1" placeholder="Parcelle P1">
+        </div>
+        <div class="field full-width">
+          <label>Observations (espèce, catégorie, nombre, rôle) — une par ligne</label>
+          <textarea id="bio-obs" rows="6" placeholder="Coccinelle, predateur, 12, predation
+Abeille domestique, pollinisateur, 25, pollinisation
+Mésange bleue, oiseau, 4, predation
+Ver de terre, ver_de_terre, 40, aeration
+Syrphe, pollinisateur, 8, pollinisation
+Pissenlit, plante, 15, indicateur"></textarea>
+        </div>
+        <button type="submit" class="btn-primary">Calculer indice</button>
+      </form>
+      <div id="result-biodiversite" class="result-box"></div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>Association ORIM · Genève, Suisse · AGPL-3.0-or-later</p>
+    <p class="footer-pilier">Local-first · Zéro extraction · 100% explicable</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

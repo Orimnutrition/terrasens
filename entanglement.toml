@@ -1,10 +1,10 @@
-# TERRASENS — Matrice d'intrication quantique
+# AGRORIM — Matrice d'intrication quantique
 # Chaque paire definit des modules couples : modifier l'un propage au second.
-# Utilise par le Moteur Quantique (/quantum-terrasens entangle)
+# Utilise par le Moteur Quantique (/quantum-agrorim entangle)
 
 [metadata]
 version = "1.0.0"
-description = "Paires intriquees TERRASENS — auto-synchronisation des modules"
+description = "Paires intriquees AGRORIM — auto-synchronisation des modules"
 
 # ═══════════════════════════════════════════════════════
 # PAIRE 1 : Sol ↔ Cultures
@@ -12,8 +12,8 @@ description = "Paires intriquees TERRASENS — auto-synchronisation des modules"
 # ═══════════════════════════════════════════════════════
 [[entanglement]]
 id = "ENT-001"
-module_a = "terrasens-soil"
-module_b = "terrasens-crops"
+module_a = "agrorim-soil"
+module_b = "agrorim-crops"
 trigger = "AnalyseSol.ph OR AnalyseSol.matiere_organique changed"
 propagation = """
   Si pH < 5.5 → exclure cultures sensibles acidite (luzerne, betterave)
@@ -29,8 +29,8 @@ priority = "haute"
 # ═══════════════════════════════════════════════════════
 [[entanglement]]
 id = "ENT-002"
-module_a = "terrasens-weather"
-module_b = "terrasens-water"
+module_a = "agrorim-weather"
+module_b = "agrorim-water"
 trigger = "ObservationMeteo.precipitation_mm OR AlerteMeteo.type_alerte changed"
 propagation = """
   Si pluie prevue > 20mm/48h → suspendre irrigation
@@ -46,8 +46,8 @@ priority = "critique"
 # ═══════════════════════════════════════════════════════
 [[entanglement]]
 id = "ENT-003"
-module_a = "terrasens-health"
-module_b = "terrasens-biodiversity"
+module_a = "agrorim-health"
+module_b = "agrorim-biodiversity"
 trigger = "DiagnosticPlante.maladie detected"
 propagation = """
   Si ravageur detecte → verifier presence predateurs naturels (M8)
@@ -63,8 +63,8 @@ priority = "haute"
 # ═══════════════════════════════════════════════════════
 [[entanglement]]
 id = "ENT-004"
-module_a = "terrasens-memory"
-module_b = "terrasens-accounting"
+module_a = "agrorim-memory"
+module_b = "agrorim-accounting"
 trigger = "SavoirAncestral applied to parcelle"
 propagation = """
   Si pratique ancestrale utilisee → calculer economie vs methode conventionnelle
@@ -80,7 +80,7 @@ priority = "moyenne"
 # ═══════════════════════════════════════════════════════
 [[entanglement]]
 id = "ENT-005"
-module_a = "terrasens-auth"
+module_a = "agrorim-auth"
 module_b = "ui"
 trigger = "ResultatAuth.score OR CoucheAuth changed"
 propagation = """
@@ -97,8 +97,8 @@ priority = "critique"
 # ═══════════════════════════════════════════════════════
 [[entanglement]]
 id = "ENT-006"
-module_a = "terrasens-db"
-module_b = "terrasens-core"
+module_a = "agrorim-db"
+module_b = "agrorim-core"
 trigger = "SQL migration applied"
 propagation = """
   Nouvelle colonne → ajouter champ dans struct Rust correspondante
@@ -114,7 +114,7 @@ priority = "haute"
 # ═══════════════════════════════════════════════════════
 [[entanglement]]
 id = "ENT-007"
-module_a = "terrasens-rules"
+module_a = "agrorim-rules"
 module_b = "i18n"
 trigger = "RegleAgronomique added OR modified"
 propagation = """
@@ -131,8 +131,8 @@ priority = "moyenne"
 # ═══════════════════════════════════════════════════════
 [[entanglement]]
 id = "ENT-008"
-module_a = "terrasens-sensors"
-module_b = "terrasens-soil"
+module_a = "agrorim-sensors"
+module_b = "agrorim-soil"
 trigger = "LectureCapteur.type_capteur == Ph OR HumiditeSol"
 propagation = """
   Lecture pH capteur → creer AnalyseSol partielle automatique

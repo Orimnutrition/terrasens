@@ -1,10 +1,10 @@
-# TERRASENS™ — IA Agronomique Souveraine
+# AGRORIM™ — IA Agronomique Souveraine
 
 **Local-first · Zéro cloud · Zéro extraction · 100% explicable**
 
-TERRASENS™ est une intelligence artificielle agronomique souveraine, conçue pour protéger les agriculteurs de la technologie, pas pour les asservir.
+AGRORIM™ est une intelligence artificielle agronomique souveraine, conçue pour protéger les agriculteurs de la technologie, pas pour les asservir.
 
-> *TERRASENS™ est une marque d'Olivier Chevalley. Le logiciel est développé par l'Association ORIM Genève sous licence AGPL-3.0-or-later.*
+> *AGRORIM™ est une marque d'Olivier Chevalley. Le logiciel est développé par l'Association ORIM Genève sous licence AGPL-3.0-or-later.*
 
 ## 7 Piliers Inviolables
 
@@ -43,12 +43,11 @@ TERRASENS™ est une intelligence artificielle agronomique souveraine, conçue p
 ## Stack Technique
 
 - **Langage** : Rust 1.94 (sécurité mémoire, performance, embarqué)
+- **UI Desktop** : Tauri v2 (vanilla HTML/CSS/JS, 9 commandes IPC, 3.2 MB)
 - **Base de données** : SQLite + WAL mode (local, zéro cloud)
-- **ML** : ONNX Runtime (inférence locale, prévu)
-- **Vision** : YOLOv8 nano (détection maladies, prévu)
-- **UI** : Tauri (desktop/mobile natif, prévu)
+- **ML** : ONNX Runtime (inférence locale, YOLOv8 nano)
 - **Capteurs** : MQTT / LoRa / I2C
-- **Cible** : Raspberry Pi 4+, laptop, smartphone
+- **Cible** : macOS (DMG), Linux, Windows, Raspberry Pi 4+
 
 ## Quickstart
 
@@ -57,44 +56,57 @@ TERRASENS™ est une intelligence artificielle agronomique souveraine, conçue p
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # Cloner et compiler
-git clone https://github.com/Orimnutrition/terrasens.git
-cd terrasens
+git clone https://github.com/Orimnutrition/agrorim.git
+cd agrorim
 cargo build
 
-# Lancer la démo complète (8 modules)
+# Lancer la démo CLI (8 modules)
 cargo run
 
 # Lancer les tests (134 tests)
 cargo test --workspace
+
+# Lancer l'interface desktop Tauri
+cargo tauri dev
+
+# Build macOS release (.app + .dmg)
+cargo tauri build
 ```
 
 ## Architecture
 
 ```
-terrasens/
-├── src/main.rs                    # Démo M1-M8
+agrorim/
+├── src/main.rs                    # Démo CLI M1-M8
+├── src-tauri/                     # Backend desktop Tauri v2
+│   ├── src/main.rs                # Point d'entrée + 9 commandes IPC
+│   └── src/commands.rs            # Pont Rust ↔ JavaScript (M1-M8)
+├── src-frontend/                  # Interface web (vanilla)
+│   ├── index.html                 # 8 onglets modules
+│   ├── styles.css                 # Charte ORIM Teal/Gold/Dark
+│   └── app.js                     # IPC invoke() layer
 ├── CLA.md                         # Contributor License Agreement
 ├── CONTRIBUTORS.md                # Contributeurs
 ├── entanglement.toml              # Matrice d'intrication
 ├── crates/
-│   ├── terrasens-core/            # Types, unités, géo, erreurs, traits
-│   ├── terrasens-soil/            # M1 — Analyse de sol
-│   ├── terrasens-crops/           # M2 — Cultures et rotation
-│   ├── terrasens-weather/         # M3 — Météo hyper-locale
-│   ├── terrasens-health/          # M4 — Santé végétale
-│   ├── terrasens-water/           # M5 — Gestion hydrique
-│   ├── terrasens-memory/          # M6 — Mémoire ancestrale
-│   ├── terrasens-accounting/      # M7 — Comptabilité agronomique
-│   ├── terrasens-biodiversity/    # M8 — Biodiversité
-│   ├── terrasens-auth/            # Authentification terrain 4 couches
-│   ├── terrasens-db/              # SQLite local (WAL mode)
-│   ├── terrasens-sensors/         # Capteurs IoT (MQTT/LoRa)
-│   └── terrasens-rules/           # Moteur de règles explicables
+│   ├── agrorim-core/            # Types, unités, géo, erreurs, traits
+│   ├── agrorim-soil/            # M1 — Analyse de sol
+│   ├── agrorim-crops/           # M2 — Cultures et rotation
+│   ├── agrorim-weather/         # M3 — Météo hyper-locale
+│   ├── agrorim-health/          # M4 — Santé végétale
+│   ├── agrorim-water/           # M5 — Gestion hydrique
+│   ├── agrorim-memory/          # M6 — Mémoire ancestrale
+│   ├── agrorim-accounting/      # M7 — Comptabilité agronomique
+│   ├── agrorim-biodiversity/    # M8 — Biodiversité
+│   ├── agrorim-auth/            # Authentification terrain 4 couches
+│   ├── agrorim-db/              # SQLite local (WAL mode)
+│   ├── agrorim-sensors/         # Capteurs IoT (MQTT/LoRa)
+│   └── agrorim-rules/           # Moteur de règles explicables
 ```
 
 ## Contribuer
 
-TERRASENS™ est un projet de l'Association ORIM Genève. Contributions bienvenues !
+AGRORIM™ est un projet de l'Association ORIM Genève. Contributions bienvenues !
 
 **Important : tout contributeur doit accepter le [CLA](CLA.md) avant sa première contribution.**
 
@@ -108,9 +120,10 @@ TERRASENS™ est un projet de l'Association ORIM Genève. Contributions bienvenu
 
 ## Propriété Intellectuelle
 
-- **TERRASENS™** est une marque d'Olivier Chevalley
+- **AGRORIM™** est une marque d'Olivier Chevalley (Agro + ORIM)
 - **Code source** : © 2026 Association ORIM Genève — AGPL-3.0-or-later
-- **Brevets** : Innovations protégées par defensive publication (mars 2026)
+- **Brevets** : 15 innovations identifiées, 25 revendications, dossier IPI en cours
+- **Defensive publication** : 5 innovations publiées (antériorité mars 2026)
 - **CLA** : Obligatoire pour tout contributeur
 
 ## Licence
@@ -125,4 +138,4 @@ Association ORIM · Genève, Suisse · info@orimnutrition.com
 
 ---
 
-*TERRASENS™ — Parce que la terre a un sens.*
+*AGRORIM™ — L'agriculture a un sens.*

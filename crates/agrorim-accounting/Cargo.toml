@@ -1,0 +1,12 @@
+[package]
+name = "agrorim-accounting"
+version = "0.1.0"
+edition = "2024"
+description = "Module M7 — Comptabilité agronomique AGRORIM"
+
+[dependencies]
+agrorim-core = { path = "../agrorim-core" }
+serde = { version = "1", features = ["derive"] }
+chrono = { version = "0.4", features = ["serde"] }
+thiserror = "2"
+tracing = "0.1"

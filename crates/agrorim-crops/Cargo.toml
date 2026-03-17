@@ -1,0 +1,13 @@
+[package]
+name = "agrorim-crops"
+version = "0.1.0"
+edition = "2024"
+description = "Module M2 — Planification cultures AGRORIM"
+
+[dependencies]
+agrorim-core = { path = "../agrorim-core" }
+agrorim-rules = { path = "../agrorim-rules" }
+serde = { version = "1", features = ["derive"] }
+chrono = { version = "0.4", features = ["serde"] }
+thiserror = "2"
+tracing = "0.1"
