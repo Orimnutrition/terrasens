@@ -4,6 +4,14 @@
 //! Sources : capteurs locaux, stations météo, modèles statistiques.
 //! Zéro cloud — tout tourne en local.
 
+pub mod alertes;
+pub mod previsions;
+pub mod service;
+
+pub use alertes::*;
+pub use previsions::*;
+pub use service::*;
+
 use serde::{Deserialize, Serialize};
 use terrasens_core::{Celsius, GeoPoint, Millimetres, Timestamp};
 
@@ -26,25 +34,6 @@ pub enum SourceMeteo {
     CapteurLocal(String),
     StationProche(String),
     Estimation,
-}
-
-/// Alerte météo pour l'agriculteur
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct AlerteMeteo {
-    pub type_alerte: TypeAlerte,
-    pub message: String,
-    pub debut: Timestamp,
-    pub severite: u8, // 1-5
-}
-
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub enum TypeAlerte {
-    Gel,
-    Canicule,
-    Orage,
-    Grele,
-    Secheresse,
-    VentFort,
 }
 
 #[cfg(test)]

@@ -30,6 +30,13 @@ terrasens-soil = { path = "crates/terrasens-soil" }
 terrasens-db = { path = "crates/terrasens-db" }
 terrasens-auth = { path = "crates/terrasens-auth" }
 terrasens-rules = { path = "crates/terrasens-rules" }
+terrasens-crops = { path = "crates/terrasens-crops" }
+terrasens-weather = { path = "crates/terrasens-weather" }
+terrasens-health = { path = "crates/terrasens-health" }
+terrasens-water = { path = "crates/terrasens-water" }
+terrasens-memory = { path = "crates/terrasens-memory" }
+terrasens-accounting = { path = "crates/terrasens-accounting" }
+terrasens-biodiversity = { path = "crates/terrasens-biodiversity" }
 
 # CLI & Runtime
 tokio = { version = "1", features = ["full"] }
