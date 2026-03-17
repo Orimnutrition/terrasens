@@ -1,4 +1,4 @@
-//! # TERRASENS — IA Agronomique Souveraine
+//! # TERRASENS™ — IA Agronomique Souveraine
 //!
 //! Point d'entrée principal — Démonstration de tous les modules M1-M8.
 //! Local-first · Zéro cloud · Zéro extraction · 100% explicable
