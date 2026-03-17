@@ -20,7 +20,9 @@ dependencies = [
  "agrorim-db",
  "agrorim-health",
  "agrorim-memory",
+ "agrorim-ml",
  "agrorim-rules",
+ "agrorim-sensors",
  "agrorim-soil",
  "agrorim-water",
  "agrorim-weather",
@@ -141,6 +143,17 @@ dependencies = [
  "agrorim-core",
  "chrono",
  "serde",
+ "thiserror 2.0.18",
+ "tracing",
+]
+
+[[package]]
+name = "agrorim-ml"
+version = "0.1.0"
+dependencies = [
+ "agrorim-core",
+ "serde",
+ "serde_json",
  "thiserror 2.0.18",
  "tracing",
 ]

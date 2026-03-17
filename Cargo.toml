@@ -22,6 +22,7 @@ members = [
     "crates/agrorim-db",
     "crates/agrorim-sensors",
     "crates/agrorim-rules",
+    "crates/agrorim-ml",
     "src-tauri",
 ]
 
@@ -38,6 +39,8 @@ agrorim-water = { path = "crates/agrorim-water" }
 agrorim-memory = { path = "crates/agrorim-memory" }
 agrorim-accounting = { path = "crates/agrorim-accounting" }
 agrorim-biodiversity = { path = "crates/agrorim-biodiversity" }
+agrorim-ml = { path = "crates/agrorim-ml" }
+agrorim-sensors = { path = "crates/agrorim-sensors" }
 
 # CLI & Runtime
 tokio = { version = "1", features = ["full"] }
